@@ -1,0 +1,62 @@
+#include <algorithm>
+#include <iomanip>
+#include <iostream>
+#include <queue>
+#include <tuple>
+#include <vector>
+using namespace std;
+using ll = long long;
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+using vi = vector<int>;
+using vll = vector<ll>;
+using vpii = vector<pii>;
+using vvi = vector<vi>;
+int INF = 2e9;
+ll LINF = 1e18;
+int dy[]{0, -1, 0, 1};
+int dx[]{-1, 0, 1, 0};
+#define endl '\n'
+#define rp(x, i, j) for (int x = (i); x < (j); ++x)
+#define rpr(x, i, j) for (int x = (i) - 1; x >= j; --x)
+#define rpe(e, arr) for (auto& e : arr)
+#define all(x) begin(x), end(x)
+
+struct v2 {
+    ll y, x;
+    auto operator<(const v2& o) const {
+        return y < o.y || y == o.y && x < o.x;
+    }
+    v2 operator-(const v2& o) const {
+        return {y - o.y, x - o.x};
+    }
+};
+
+istream& operator>>(istream& is, v2& o) {
+    is >> o.x >> o.y;
+    return is;
+}
+
+ll ccw(const v2& a, const v2& b) {
+    return a.x * b.y - b.x * a.y;
+}
+
+ll ccw(const v2& a, const v2& b, const v2& c) {
+    return ccw(b - a, c - a);
+}
+
+vector<v2> get_hull(vector<v2> pt) {
+    if (pt.size() <= 3) return pt;
+    sort(begin(pt), end(pt));
+    vector<v2> l, r;
+    for (auto& e : pt) {
+        for (int i = l.size() - 1; i >= 1 && ccw(l[i - 1], l[i], e) >= 0; --i)
+            l.pop_back();
+        l.push_back(e);
+        for (int i = r.size() - 1; i >= 1 && ccw(r[i - 1], r[i], e) <= 0; --i)
+            r.pop_back();
+        r.push_back(e);
+    }
+    r.insert(end(r), rbegin(l) + 1, rend(l) - 1);
+    return r;
+}
