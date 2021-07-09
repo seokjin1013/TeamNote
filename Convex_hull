@@ -1,18 +1,14 @@
-#include <algorithm>
-#include <iomanip>
-#include <iostream>
-#include <queue>
-#include <tuple>
-#include <vector>
-using namespace std;
-using ll = long long;
-using pii = pair<int, int>;
-using pll = pair<ll, ll>;
-using vi = vector<int>;
-using vll = vector<ll>;
-using vpii = vector<pii>;
-using vvi = vector<vi>;
-int INF = 2e9;
+#include<bits/stdc++.h>
+typedef long long ll;
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
+typedef vector<int> vi;
+typedef vector<ll> vll;
+typedef vector<pii> vpii;
+typedef vector<vi> vvi;
+typedef complex<double> cd;
+typedef vector<cd> vcd;
+int INF = 1e9;
 ll LINF = 1e18;
 int dy[]{0, -1, 0, 1};
 int dx[]{-1, 0, 1, 0};
