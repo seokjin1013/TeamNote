@@ -34,6 +34,9 @@ void fft(vcd& p) {
         fft(q);
         rp(i, 0, p.size()) p[i] *= q[i];
         ifft(p);
+        
+        다음 링크의 3.길쌈(convolution)의 대수적 성질과 길쌈정리 참고
+        https://ghebook.blogspot.com/2020/10/properties-of-fourier-transform.html
     */
     int n = p.size();
     for (int i = 1, j = 0; i < n; ++i) {
