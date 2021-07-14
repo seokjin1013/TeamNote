@@ -19,7 +19,6 @@ ll LINF = 1e18;
 int dy[]{0, -1, 0, 1};
 int dx[]{-1, 0, 1, 0};
 
-const int MAX = 1'000'000;
 const double PI = acos(0) * 2;
 
 void fft(vcd& p) {
